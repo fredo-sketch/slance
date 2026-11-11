@@ -1,0 +1,203 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --color-navy-50: #f3f6fb;
+  --color-navy-100: #e3eaf5;
+  --color-navy-200: #c5d3ea;
+  --color-navy-300: #9bb2d8;
+  --color-navy-400: #6b88bd;
+  --color-navy-500: #4766a2;
+  --color-navy-600: #36507f;
+  --color-navy-700: #2a3f66;
+  --color-navy-800: #1a2b4d;
+  --color-navy-900: #0f1f3d;
+  --color-navy-950: #0a1730;
+
+  --color-brand-50: #eef6ff;
+  --color-brand-100: #d9eaff;
+  --color-brand-200: #bcd9ff;
+  --color-brand-300: #8ec0ff;
+  --color-brand-400: #59a0fb;
+  --color-brand-500: #2f80f0;
+  --color-brand-600: #1d6bdd;
+  --color-brand-700: #1856b8;
+  --color-brand-800: #1a4a94;
+  --color-brand-900: #1b3f77;
+
+  --color-gold-100: #fdf1cf;
+  --color-gold-400: #f6c453;
+  --color-gold-500: #f2b01e;
+  --color-gold-600: #d99700;
+
+  --shadow-card: 0 1px 2px rgb(15 31 61 / 0.05), 0 4px 16px rgb(15 31 61 / 0.06);
+  --shadow-pop: 0 10px 40px rgb(15 31 61 / 0.16);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white font-sans text-navy-900 antialiased;
+  }
+  /* Item grid boleh menyusut agar teks yang dipotong (truncate) tidak melebarkan halaman di HP. */
+  .grid > * {
+    min-width: 0;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-500;
+  }
+  ::selection {
+    @apply bg-brand-200 text-navy-900;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  /* Tombol */
+  .btn {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition select-none disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-sm {
+    @apply rounded-lg px-3.5 py-2 text-xs;
+  }
+  .btn-lg {
+    @apply rounded-2xl px-7 py-3.5 text-base;
+  }
+  .btn-primary {
+    @apply bg-navy-900 text-white shadow-sm hover:bg-navy-800 active:bg-navy-950;
+  }
+  .btn-brand {
+    @apply bg-brand-600 text-white shadow-sm hover:bg-brand-700 active:bg-brand-800;
+  }
+  .btn-gold {
+    @apply bg-gold-500 text-navy-950 shadow-sm hover:bg-gold-400;
+  }
+  .btn-outline {
+    @apply border border-navy-200 bg-white text-navy-800 hover:border-navy-300 hover:bg-navy-50;
+  }
+  .btn-ghost {
+    @apply text-navy-700 hover:bg-navy-50;
+  }
+  .btn-danger {
+    @apply bg-red-600 text-white hover:bg-red-700;
+  }
+  .btn-success {
+    @apply bg-emerald-600 text-white hover:bg-emerald-700;
+  }
+
+  /* Kartu */
+  .card {
+    @apply rounded-2xl border border-navy-100 bg-white shadow-card;
+  }
+  .card-pad {
+    @apply p-5 sm:p-6;
+  }
+
+  /* Form */
+  .label {
+    @apply mb-1.5 block text-sm font-semibold text-navy-800;
+  }
+  .hint {
+    @apply mt-1 text-xs text-navy-500;
+  }
+  .input {
+    @apply w-full rounded-xl border border-navy-200 bg-white px-3.5 py-2.5 text-sm text-navy-900 placeholder:text-navy-300 transition focus:border-brand-500 focus:ring-4 focus:ring-brand-100 focus:outline-none disabled:bg-navy-50;
+  }
+
+  /* Lencana */
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold whitespace-nowrap;
+  }
+  .badge-navy {
+    @apply bg-navy-100 text-navy-800;
+  }
+  .badge-blue {
+    @apply bg-brand-100 text-brand-800;
+  }
+  .badge-green {
+    @apply bg-emerald-100 text-emerald-800;
+  }
+  .badge-amber {
+    @apply bg-gold-100 text-amber-800;
+  }
+  .badge-red {
+    @apply bg-red-100 text-red-800;
+  }
+  .badge-slate {
+    @apply bg-slate-100 text-slate-700;
+  }
+
+  .eyebrow {
+    @apply text-xs font-bold tracking-[0.14em] text-brand-600 uppercase;
+  }
+  .h-section {
+    @apply text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl;
+  }
+
+  /* Tabel */
+  .table-x {
+    @apply w-full text-left text-sm;
+  }
+  .table-x th {
+    @apply border-b border-navy-100 bg-navy-50/60 px-4 py-3 text-xs font-bold tracking-wide text-navy-600 uppercase;
+  }
+  .table-x td {
+    @apply border-b border-navy-50 px-4 py-3 align-middle;
+  }
+  .table-x tr:last-child td {
+    @apply border-b-0;
+  }
+}
+
+/* Latar titik halus untuk hero / seksi gelap */
+.bg-dots {
+  background-image: radial-gradient(rgb(255 255 255 / 0.1) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+.bg-dots-light {
+  background-image: radial-gradient(rgb(15 31 61 / 0.07) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+.animate-floaty {
+  animation: floaty 6s ease-in-out infinite;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-up {
+  animation: fade-up 0.35s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-floaty,
+  .animate-fade-up {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
